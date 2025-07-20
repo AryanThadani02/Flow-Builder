@@ -1,0 +1,131 @@
+.nodes-panel {
+  width: 280px;
+  background: white;
+  border-right: 1px solid #e2e8f0;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 2px 0 4px rgba(0, 0, 0, 0.1);
+}
+
+.panel-header {
+  padding: 16px 20px;
+  border-bottom: 1px solid #e2e8f0;
+  background: #f8fafc;
+}
+
+.panel-header h3 {
+  margin: 0 0 6px 0;
+  font-size: 16px;
+  font-weight: 600;
+  color: #1e293b;
+}
+
+.panel-header p {
+  margin: 0;
+  font-size: 13px;
+  color: #64748b;
+}
+
+.nodes-list {
+  flex: 1;
+  padding: 16px;
+  overflow-y: auto;
+}
+
+.node-item {
+  display: flex;
+  align-items: center;
+  padding: 12px;
+  margin-bottom: 8px;
+  background: white;
+  border: 1px solid #e2e8f0;
+  border-left: 4px solid #3b82f6;
+  border-radius: 8px;
+  cursor: grab;
+  transition: all 0.2s ease;
+  position: relative;
+}
+
+.node-item:hover {
+  border-color: #3b82f6;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  transform: translateY(-1px);
+}
+
+.node-item:active {
+  cursor: grabbing;
+  transform: translateY(0);
+}
+
+.node-icon {
+  margin-right: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  background: #f1f5f9;
+  border-radius: 6px;
+  font-size: 18px;
+}
+
+.node-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.node-label {
+  font-weight: 500;
+  color: #1e293b;
+  margin-bottom: 4px;
+  font-size: 14px;
+}
+
+.node-description {
+  font-size: 12px;
+  color: #64748b;
+  line-height: 1.4;
+}
+
+.drag-indicator {
+  color: #94a3b8;
+  opacity: 0.6;
+  transition: opacity 0.2s ease;
+}
+
+.node-item:hover .drag-indicator {
+  opacity: 1;
+  color: #3b82f6;
+}
+
+.panel-footer {
+  padding: 16px 20px;
+  border-top: 1px solid #e2e8f0;
+  background: #f8fafc;
+  text-align: center;
+}
+
+.panel-footer p {
+  margin: 0;
+  font-size: 12px;
+  color: #64748b;
+  font-style: italic;
+}
+
+/* Scrollbar styling */
+.nodes-list::-webkit-scrollbar {
+  width: 6px;
+}
+
+.nodes-list::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+
+.nodes-list::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 3px;
+}
+
+.nodes-list::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+} 
