@@ -6,7 +6,7 @@ import SettingsPanel from './components/SettingsPanel';
 import TextNode from './components/TextNode';
 import SaveButton from './components/SaveButton';
 import ErrorNotification from './components/ErrorNotification';
-import './App.css';
+
 
 const initialNodes = [];
 
@@ -201,7 +201,7 @@ export default function App() {
 
   return (
     <ReactFlowProvider>
-      <div className="flow-builder">
+      <div className="flex w-screen h-screen bg-slate-50">
         <SaveButton
           nodes={nodes}
           edges={edges}
@@ -212,7 +212,7 @@ export default function App() {
           error={error}
           onClose={clearError}
         />
-        <div className="react-flow-container" ref={reactFlowWrapper}>
+        <div className="flex-1 h-screen relative" ref={reactFlowWrapper}>
           <ReactFlow
             nodes={nodes}
             edges={edges}

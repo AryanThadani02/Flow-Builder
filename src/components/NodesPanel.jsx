@@ -1,5 +1,4 @@
 import React from "react";
-import "./NodesPanel.css";
 
 const nodeTypes = [
   {
@@ -34,38 +33,47 @@ const NodesPanel = () => {
   };
 
   return (
-    <div className="nodes-panel">
-      <div className="panel-header">
-        <h3>Nodes</h3>
+    <div className="w-80 bg-white border-l border-slate-200 flex flex-col">
+      <div className="p-4 border-b border-slate-200">
+        <h3 className="text-lg font-semibold text-slate-800">Nodes</h3>
       </div>
 
-      <div className="nodes-list">
+      <div className="flex-1 p-4 space-y-3">
         {nodeTypes.map((nodeType) => {
           return (
             <div
               key={nodeType.type}
-              className="node-item"
+              className="flex items-center gap-3 p-3 bg-slate-50 border border-slate-200 rounded-lg cursor-move hover:bg-slate-100 hover:border-slate-300 transition-all duration-200"
               draggable
               onDragStart={(event) =>
                 onDragStart(event, nodeType.type, nodeType.label)
               }
-              style={{ borderLeftColor: nodeType.color }}
+              style={{
+                borderLeftColor: nodeType.color,
+                borderLeftWidth: "4px",
+              }}
             >
-              <div className="node-icon" style={{ color: nodeType.color }}>
+              <div className="text-2xl" style={{ color: nodeType.color }}>
                 {nodeType.icon}
               </div>
-              <div className="node-info">
-                <div className="node-label">{nodeType.label}</div>
-                <div className="node-description">{nodeType.description}</div>
+              <div className="flex-1">
+                <div className="font-medium text-slate-800">
+                  {nodeType.label}
+                </div>
+                <div className="text-sm text-slate-600">
+                  {nodeType.description}
+                </div>
               </div>
-              <div className="drag-indicator">➕</div>
+              <div className="text-slate-400 text-lg">➕</div>
             </div>
           );
         })}
       </div>
 
-      <div className="panel-footer">
-        <p>More node types coming soon!</p>
+      <div className="p-4 border-t border-slate-200">
+        <p className="text-sm text-slate-500 text-center">
+          More node types coming soon!
+        </p>
       </div>
     </div>
   );

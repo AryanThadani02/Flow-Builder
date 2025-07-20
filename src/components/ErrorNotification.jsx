@@ -1,5 +1,4 @@
 import React from "react";
-import "./ErrorNotification.css";
 
 const ErrorNotification = ({ error, onClose }) => {
   if (!error) {
@@ -7,17 +6,20 @@ const ErrorNotification = ({ error, onClose }) => {
   }
 
   const isSuccess = error.includes("✅");
-  const notificationClass = isSuccess
-    ? "success-notification"
-    : "error-notification";
+  const bgColor = isSuccess ? "bg-green-500" : "bg-red-500";
   const icon = isSuccess ? "✅" : "⚠️";
 
   return (
-    <div className={notificationClass}>
-      <div className="error-content">
-        <span className="error-icon">{icon}</span>
-        <span className="error-message">{error}</span>
-        <button className="error-close" onClick={onClose}>
+    <div
+      className={`fixed top-4 left-1/2 transform -translate-x-1/2 z-50 ${bgColor} text-white px-6 py-3 rounded-lg shadow-lg max-w-md`}
+    >
+      <div className="flex items-center gap-3">
+        <span className="text-lg">{icon}</span>
+        <span className="flex-1">{error}</span>
+        <button
+          className="text-white hover:text-gray-200 transition-colors"
+          onClick={onClose}
+        >
           ✕
         </button>
       </div>
