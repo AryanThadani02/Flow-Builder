@@ -7,8 +7,6 @@ const BaseNode = ({
   data,
   selected,
   children,
-  onContentChange,
-  onLabelChange,
   onDelete,
   leftHandle = true,
   rightHandle = true,
@@ -19,24 +17,6 @@ const BaseNode = ({
   nodeType = "default",
   icon = "📄",
 }) => {
-  const handleContentChange = useCallback(
-    (event) => {
-      if (onContentChange) {
-        onContentChange(event.target.value);
-      }
-    },
-    [onContentChange]
-  );
-
-  const handleLabelChange = useCallback(
-    (event) => {
-      if (onLabelChange) {
-        onLabelChange(event.target.value);
-      }
-    },
-    [onLabelChange]
-  );
-
   const handleDelete = useCallback(() => {
     if (onDelete) {
       onDelete(id);
