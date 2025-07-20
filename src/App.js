@@ -163,7 +163,13 @@ export default function App() {
   // Listen for delete node events
   useEffect(() => {
     const handleDeleteNode = (event) => {
-      deleteNode(event.detail.nodeId);
+      const nodeId = event.detail.nodeId;
+      setNodes((nds) => nds.filter((node) => node.id !== nodeId));
+      setEdges((eds) => eds.filter((edge) =>
+        edge.source !== nodeId && edge.target !== nodeId
+      ));
+      // Clear selection if the deleted node was selected
+      setSelectedNode((prev) => prev && prev.id === nodeId ? null : prev);
     };
 
     const handleUpdateNodeContent = (event) => {
@@ -197,7 +203,7 @@ export default function App() {
       window.removeEventListener('updateNodeContent', handleUpdateNodeContent);
       window.removeEventListener('updateNodeLabel', handleUpdateNodeLabel);
     };
-  }, [deleteNode]);
+  }, []);
 
   return (
     <ReactFlowProvider>
@@ -239,7 +245,7 @@ export default function App() {
             <MiniMap />
           </ReactFlow>
         </div>
-        {selectedNode ? (
+        {selectedNode && nodes.find(n => n.id === selectedNode.id) ? (
           <SettingsPanel
             selectedNode={selectedNode}
             onUpdateNode={updateNode}
